@@ -1,0 +1,108 @@
+NodeJS ver: 14.17.3
+_________MỘT VÀI CÁCH FIX LỖI_______________________
+Issue#1: Object for dependency "@babel/core" is empty...... 
+    Fix: delete package-lock.json -> npm i -g rimraf (rimraf để xóa node_modules) -> rimraf node_modules
+____________________________________________________
+Babel được sinh  ra để compile code 
+// JSX: JavaScript XML
+// ES6
+// Babel: JavaScript Compiler
+
+/**
+ VD1: 
+ el = <div id="root"> <h1> Hello World </h1> </div> => Đây là dưới dạng JSX 
+ el = React.createElement('div', {id: 'root'}, React.createElement('h1', null, 'Hello World')) => Đây là dưới dạng React.createElement
+ function createElement(elementType, props, ...children) 
+ elementType: div, h1, p, ...
+ props: className, id, style, ...
+ ...children: text, element, ...
+ VD2:
+  el2 = (<div> 
+    <span> Hello </span> <span> World </span>
+    </div>) => Đây là dưới dạng JSX
+  el2 = React.createElement('div', {
+    children: [
+      React.createElement('span', null, 'Hello'),
+      ' ',
+      React.createElement('span', null, 'World')
+    ]
+  }) => Đây là dưới dạng React.createElement
+
+ */
+
+- JSX thì phải có ít nhất 1 phần tử cha wrap tất cả lại 
+- Nếu if else thì sẽ sử dụng ternary operator: tức là cách viết rút gọn ?: ấy
+VD: <h1>Hello {name === "Cubidev" ? "Ờ đúng r cubidev" : "Không phải cubidev :("}</h1>
+- Muốn sử dụng biến trong JSX thì phải sử dụng curly braces: {}
+- Dấu ` ` được gọi là Template String 
+
+
+LINH HỒN CỦA REACT--------------------------------------------
+____________Props________________________________
+- Là viết tắt của từ Properties (thuộc tính)
+- Ví dụ YTB có thumnail, title trên mỗi video (chung chung những gì quan sát được) những cái đấy được gọi là props
+____________State________________________________
+- StateLess Functional Component là gì? 
+  + Component nhưng không sử dụng state 
+- StateFul Functional Component là gì? 
+  + Component có sử dụng state 
+- Các nước để sử dụng State: 
+  + 1. Enabling State: useState(initial value)
+  + 2. Inititalize state: useState(false )
+  + 3. Reading state 
+  + 4. Update state
+- Stale State là gì? 
+  + VD: T có 1 cái nút nhưng t setTimeOut cho nó ntn: 
+  const [count, setCount] = useState(0);
+    const handleIncrement = () => {
+        setTimeout(function delay() {
+            setCount(count + 1);
+        }, 1000);
+    };
+  + => Khi mà ấn cực nhanh vào 3-4 lần trong 1s thì lẽ ra nó phải count = 3 || 4 nhưng k thay vào đó nó chỉ có count = 1 
+  + Bởi cái useState(0) nó nằm ngoài function ( trong JS gọi là closure ) nên nó chỉ lấy gtri khởi tạo là 0 thôi  
+  + Nên để khắc phục ta phải sử dụng callBack bên trong ntn: setCount((count) => count + 1);
+    + Khi này (count) này sẽ là prevState còn cái vế còn lại => count + 1 sẽ là prevState + 1
+- useReducer: 
+  +Sử dụng: 
+     để xử lý state phức tạp 
+  + Cách khai báo: 
+    const [state, dispatch] = useReducer(reducer, initialstate); 
+    const action = {type: 'CLICK', payload: {}}
+  + Ý nghĩa: 
+    initialState: giá trị khởi tạo ( khi sử dụng useReducer thì nó sẽ là 1 cái object)
+    dispatch: nó là 1 function chấp nhận action của chúng ta làm đầu vào 
+      VD: Cứ hiểu đây chính là 1 cái action nhé (mặc dù bản thân name là dispatch)
+                dispatch({
+              type: 'CLICK',
+              payload: {
+                index,
+                winner,
+              }
+            })
+--------------------------------------------------------------
+Rendering List: Chúng ta sử dụng method map truyền vào item và index để map ra các item 
+- Lưu ý khi sử dụng rendering list: 
+  + Nếu bên trong map ra các cái thẻ hay component (reactfunctionalcomponent) 
+  Thì chúng ta phải dùng arror function => với dấu "()" để bọc lại item mà chúng ta muốn map ra => Cách viết rút gọn 
+  + Để đơn giản hơn thì hãy sử dụng => { return () } 
+
+- Object Destructuring
+const student = {
+    name: "cubi", 
+    age: 20
+}
+const {name, age} = student;
+
+_________________STYLE_______________________________________________
+1. SASS 
+  - Cài đặt: npm i node-sass@4.14.1
+  Dùng như CSS bth v nhưng nó vip hơn nhiều 
+2. CSS Module 
+  - Cài đặt: tạo file css như bth thêm cái đuôi.module.css 
+3. styled-component
+  - Cài đặt: npm i styled-components
+  - Sau đó nên cài thêm cái babel nữa: https://styled-components.com/docs/tooling#babel-plugin
+  - Short-cut để tạo props bên trong styled-components: scp 
+  - Có 2 cách sử dụng: Xem  ở Card.js và Card2.js 
+
