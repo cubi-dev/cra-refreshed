@@ -108,7 +108,7 @@ _________________STYLE_______________________________________________
   - Theme ở trong styled-components: 
     +   import { ThemeProvider } from "styled-components";
     + Bọc ThemeProvider quanh App.js 
-4. Tailwind: https://tailwindcss.com/docs/installation
+4. Tailwind: https://tailwindcss.com/docs/guides/create-react-app
 
-
+next55
 
