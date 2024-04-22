@@ -105,4 +105,10 @@ _________________STYLE_______________________________________________
   - Sau đó nên cài thêm cái babel nữa: https://styled-components.com/docs/tooling#babel-plugin
   - Short-cut để tạo props bên trong styled-components: scp 
   - Có 2 cách sử dụng: Xem  ở Card.js và Card2.js 
+  - Theme ở trong styled-components: 
+    +   import { ThemeProvider } from "styled-components";
+    + Bọc ThemeProvider quanh App.js 
+4. Tailwind: https://tailwindcss.com/docs/installation
+
+
 

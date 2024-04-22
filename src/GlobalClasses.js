@@ -5,9 +5,9 @@ export const GlobalClasses = css`
   body {
     font-family: "Poppins", sans-serif;
   }
-  .demo {
+  ${'' /* .demo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+  } */}
 `;

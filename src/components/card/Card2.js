@@ -53,36 +53,36 @@ const StyledCard = styled.div`
   .card-title {
     font-size: 18px;
     font-weight: 500;
-    color: black;
+    color: ${(props) => props.theme.colors.blue};
   }
   .user-name {
     font-weight: 300;
     font-size: 16px;
-    color: #333;
+    color: ${(props) => props.theme.orange};
   }
   .card-amount {
     font-size: ${(props) => props.fontSize || "18px"};
-  font-weight: bold;
-  ${(props) =>
-    props.secondary &&
-    css`
-      background: linear-gradient(86.88deg, #20e3b2, #2cccff);
-    `};
-  ${(props) =>
-    !props.secondary &&
-    css`
-      background: linear-gradient(
-        86.88deg,
-        #7d6aff 1.38%,
-        #ffb86c 64.35%,
-        #fc2872 119.91%
-      );
-    `};
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
+    font-weight: bold;
+    ${(props) =>
+      props.secondary &&
+      css`
+        background: linear-gradient(86.88deg, #20e3b2, #2cccff);
+      `};
+    ${(props) =>
+      !props.secondary &&
+      css`
+        background: linear-gradient(
+          86.88deg,
+          #7d6aff 1.38%,
+          #ffb86c 64.35%,
+          #fc2872 119.91%
+        );
+      `};
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
   }
-  .card-meta{
+  .card-meta {
     display: flex;
     align-items: center;
     column-gap: 12px;
@@ -109,8 +109,8 @@ const Card2 = (props) => {
             <span className="user-name">@zndrson</span>
           </div>
           <div className="card-meta">
-          <img src={heartIcon} alt="heart" />
-          <div>256</div>
+            <img src={heartIcon} alt="heart" />
+            <div>256</div>
           </div>
         </div>
         <div className="card-footer">
@@ -118,6 +118,8 @@ const Card2 = (props) => {
           <span className="card-amount">12,000 PSL</span>
         </div>
       </div>
+      <h1 class="text-3xl font-bold underline">
+  </h1>
     </StyledCard>
   );
 };
