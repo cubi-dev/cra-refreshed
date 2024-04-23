@@ -109,6 +109,8 @@ _________________STYLE_______________________________________________
     +   import { ThemeProvider } from "styled-components";
     + Bọc ThemeProvider quanh App.js 
 4. Tailwind: https://tailwindcss.com/docs/guides/create-react-app
+  - Cách sử dụng props trong tailwindcss 
+    + Để có thể tận dụng props và nhảy style thì trước hết phải có style được khai báo như biến ở trong tailwind.config.js
+    + Sau đó có thể truyền props vẫn như bình thường thôi (CardTailwind.js)
 
-next55
 

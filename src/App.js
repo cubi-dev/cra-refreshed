@@ -20,7 +20,7 @@ function App() {
       {/* <ThemeProvider theme={theme}> */}
       <GlobalStyles></GlobalStyles>
       <CardList>
-        <CardTailwind></CardTailwind>
+        <CardTailwind primary fontSize='text-2xl'></CardTailwind>
       </CardList>
       {/* </ThemeProvider> */}
     </div>

@@ -1,7 +1,12 @@
 import React from "react";
 import heartIcon from "./icon-heart.svg";
 
-const CardTailwind = () => {
+const CardTailwind = (props) => {
+  const amountClasses = `text-lg font-bold text-transparent bg-clip-text ${
+    props.primary ? "bg-primary-gradient" : "bg-secondary-gradient"
+  }`;
+
+
   return (
     <div className="relative">
       <div className="w-full rounded-lg h-[400px]">
@@ -27,8 +32,8 @@ const CardTailwind = () => {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <h3 className="text-lg font-medium">Cosmic Perspective</h3>
-          <span className="font-bold">12,000 PSL</span>
+          <h3 className={`font-medium ${props.fontSize || 'text-lg'} `}>Cosmic Perspective</h3>
+          <span className={amountClasses}>12,000 PSL</span>
         </div>
       </div>
     </div>
