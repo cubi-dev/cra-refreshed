@@ -2,6 +2,15 @@ NodeJS ver: 14.17.3
 _________MỘT VÀI CÁCH FIX LỖI_______________________
 Issue#1: Object for dependency "@babel/core" is empty...... 
     Fix: delete package-lock.json -> npm i -g rimraf (rimraf để xóa node_modules) -> rimraf node_modules
+Issue#2: Duplicate log (Log tận 2 lần) 
+    Fix: Thực ra nó nằm ở index.js chúng ta sử dụng  <React.StrictMode> nên nó sẽ log 2 lần khi trong môi trường development, 
+    Còn khi đã lên production thì nó sẽ không log 2 lần nữa nhé (nó không phải lỗi nhưng vẫn ảo vch @@)
+Issue#3: Lưu ý về cách sử dụng spread operator (lỗi này thường gặp do nhầm hoặc quên khi cta nối mảng): 
+  Đoạn mã [...randomPhotos, images] sử dụng toán tử spread (...) trong JavaScript để tạo một mảng mới.
+  ...randomPhotos sẽ "trải" tất cả các phần tử của mảng randomPhotos ra. Kết quả là mỗi phần tử của randomPhotos sẽ trở thành một phần tử riêng lẻ trong mảng mới.
+  Sau đó, images sẽ được thêm vào cuối mảng mới này như một phần tử riêng lẻ.
+  Ví dụ, nếu randomPhotos là [1, 2, 3] và images là [4, 5, 6], thì [...randomPhotos, images] sẽ tạo ra mảng [1, 2, 3, [4, 5, 6]].
+  Nếu bạn muốn tất cả các phần tử trong images cũng được trải ra như các phần tử riêng lẻ, bạn nên sử dụng [...randomPhotos, ...images]. Trong trường hợp này, [...randomPhotos, ...images] sẽ tạo ra mảng [1, 2, 3, 4, 5, 6].
 ____________________________________________________
 Babel được sinh  ra để compile code 
 // JSX: JavaScript XML
@@ -112,5 +121,17 @@ _________________STYLE_______________________________________________
   - Cách sử dụng props trong tailwindcss 
     + Để có thể tận dụng props và nhảy style thì trước hết phải có style được khai báo như biến ở trong tailwind.config.js
     + Sau đó có thể truyền props vẫn như bình thường thôi (CardTailwind.js)
-
-
+_____________________HOOKS___________________________________________
+1. useEffect: (kĩ hơn ở component photo)
+  - Nó được sử dụng để xử lý việc side effect 
+  - Side Effect: 
+    +  Là vấn đề cta sử dụng bên trong funct nhưng ảnh hướng tới bên ngoài 
+  - Cấu trúc: 
+    + useEffect(callback, [dependencies])
+    + Nhận vào 1 callback và 1 dependencies 
+    + VD: 
+      Cách 1: Viết ra hẳn function: useEffect(function callback() {}, [])
+      Cách 2: Viết ra = arrow function: useEffect(() => {}, [])
+    + Cách hoạt động: 
+      Component -> Mount -> Update(Lúc này sẽ check xem có dependencies không ? update re-render : không update) -> Unmount -> End
+next65
