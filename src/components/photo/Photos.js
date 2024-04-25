@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const getRandomPhotos = (page) => {
-  return axios
-    .get(`https://picsum.photos/v2/list?page=${page}&limit=8`)
-    .then((response) => {
-      console.log(response.data);
-      return response.data;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+const getRandomPhotos = async (page) => {
+  try {
+    const response = await axios
+      .get(`https://picsum.photos/v2/list?page=${page}&limit=8`);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // https://picsum.photos/v2/list
@@ -24,14 +23,12 @@ const Photos = () => {
   const [randomPhotos, setRandomPhotos] = useState([]);
   const [nextPage, setNextPage] = useState(1);
   //   console.log("outside useEffect");
-  const handleLoadMorePhotos = () => {
+  const handleLoadMorePhotos = async  () => {
     console.log(nextPage);
-    getRandomPhotos(nextPage).then((images) => {
-      console.log(images);
-      const newPhotos = [...randomPhotos, ...images];
+     const images = await getRandomPhotos(nextPage); 
+     const newPhotos = [...randomPhotos, ...images];
       setRandomPhotos(newPhotos);
       setNextPage(nextPage + 1);
-    });
   };
   useEffect(() => {
     // side-effects
