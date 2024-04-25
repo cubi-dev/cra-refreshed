@@ -1,12 +1,12 @@
 // import "./App.css";
-import Counter from "./components/counter/Counter";
+import Timer from "./components/Timer";
 import "./index.css";
 
 
 function App() {
   return (
     <div>
-     <Counter></Counter>
+    <Timer></Timer>
     </div>
   );
 }
