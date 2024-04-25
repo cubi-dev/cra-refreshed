@@ -1,12 +1,12 @@
 // import "./App.css";
-import Photos from "./components/photo/Photos";
+import Counter from "./components/counter/Counter";
 import "./index.css";
 
 
 function App() {
   return (
     <div>
-      <Photos></Photos>
+     <Counter></Counter>
     </div>
   );
 }
