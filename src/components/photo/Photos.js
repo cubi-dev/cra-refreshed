@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
 const getRandomPhotos = async (page) => {
   try {
-    const response = await axios
-      .get(`https://picsum.photos/v2/list?page=${page}&limit=8`);
+    const response = await axios.get(
+      `https://picsum.photos/v2/list?page=${page}&limit=8`
+    );
     console.log(response.data);
     return response.data;
   } catch (error) {
@@ -23,18 +24,20 @@ const Photos = () => {
   const [randomPhotos, setRandomPhotos] = useState([]);
   const [nextPage, setNextPage] = useState(1);
   //   console.log("outside useEffect");
-  const handleLoadMorePhotos = async  () => {
+  // Ben Awad
+  const handleLoadMorePhotos = useRef({});
+  handleLoadMorePhotos.current = async () => {
     console.log(nextPage);
-     const images = await getRandomPhotos(nextPage); 
-     const newPhotos = [...randomPhotos, ...images];
-      setRandomPhotos(newPhotos);
-      setNextPage(nextPage + 1);
+    const images = await getRandomPhotos(nextPage);
+    const newPhotos = [...randomPhotos, ...images];
+    setRandomPhotos(newPhotos);
+    setNextPage(nextPage + 1);
   };
   useEffect(() => {
     // side-effects
     // document.title = "Welcome to useEffect";
     // console.log("inside useEffect");
-    handleLoadMorePhotos();
+    handleLoadMorePhotos.current();
   }, []);
   return (
     <div>
@@ -55,7 +58,7 @@ const Photos = () => {
       </div>
       <div className="text-center">
         <button
-          onClick={handleLoadMorePhotos}
+          onClick={handleLoadMorePhotos.current}
           className="inline-block px-8 py-4 bg-purple-600 text-white"
         >
           Load more
