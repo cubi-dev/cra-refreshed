@@ -1,11 +1,13 @@
 import React from "react";
 import "./index.css";
-import TextAreaAutoResize from "./components/TextAreaAutoResize";
+import Dropdown from "./components/Dropdown";
 
 function App() {
   return (
     <div>
-      <TextAreaAutoResize></TextAreaAutoResize>
+      <div className="p-5">
+        <Dropdown></Dropdown>
+      </div>
     </div>
   );
 }
