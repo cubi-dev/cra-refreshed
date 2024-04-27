@@ -137,7 +137,10 @@ _____________________HOOKS___________________________________________
       Dependencies: Được truyền vào [] trong useEffect nó sẽ check là nếu có cái dependencies nào thay đổi thì mới chạy
 2. useRef: 
   - ref - reference
-  - Ref khác state bởi vì: Khi state thay đổi thì component re-render lại còn ref thay đổi thì component k bị re-render lại 
+  - Ref khác state bởi vì: 
+    + Khi state thay đổi thì component re-render lại còn ref thay đổi thì component k bị re-render lại 
+    + Và nên nhớ rằng state là bất đồng bộ -> tức là set lại sau khi component re-render 
+    +                 ref là đồng bộ -> tức là nó sẽ set ngay lập tức không khiến cho component re-render 
   - Cấu trúc: 
     + const inputRef, abcRef = React.useRef(initialValue);
   
