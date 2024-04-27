@@ -1,14 +1,13 @@
-// import "./App.css";
 import React from "react";
 import "./index.css";
-import StopWatch from "./components/StopWatch";
+import Input from "./components/Input";
 
 function App() {
  
 
   return (
     <div>
-     <StopWatch></StopWatch>
+     <Input></Input>
     </div>
   );
 }
