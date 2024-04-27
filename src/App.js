@@ -1,11 +1,11 @@
 // import "./App.css";
-import Photos from "./components/photo/Photos";
+import HackerNews from "./components/news/HackerNews";
 import "./index.css";
 
 function App() {
   return (
     <div>
-      <Photos></Photos>
+      <HackerNews></HackerNews>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
+  // eslint-disable-next-line
+  // const [count, setCount] = useState(0);
   // const handleIncrement = () => {
   //     setTimeout(function delay() {
   //         setCount((count) => count + 1);
