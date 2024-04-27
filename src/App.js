@@ -1,13 +1,11 @@
 import React from "react";
 import "./index.css";
-import Input from "./components/Input";
+import TextAreaAutoResize from "./components/TextAreaAutoResize";
 
 function App() {
- 
-
   return (
     <div>
-     <Input></Input>
+      <TextAreaAutoResize></TextAreaAutoResize>
     </div>
   );
 }
