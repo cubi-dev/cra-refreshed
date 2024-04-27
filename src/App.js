@@ -1,11 +1,11 @@
 // import "./App.css";
-import HackerNews from "./components/news/HackerNews";
+import HackerNewsWithReducer from "./components/news/HackerNewsWithReducer";
 import "./index.css";
 
 function App() {
   return (
     <div>
-      <HackerNews></HackerNews>
+      <HackerNewsWithReducer></HackerNewsWithReducer>
     </div>
   );
 }

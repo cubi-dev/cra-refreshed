@@ -135,4 +135,4 @@ _____________________HOOKS___________________________________________
     + Cách hoạt động: 
       Component -> Mount -> Update(Lúc này sẽ check xem có dependencies không ? update re-render : không update) -> Unmount -> End
       Dependencies: Được truyền vào [] trong useEffect nó sẽ check là nếu có cái dependencies nào thay đổi thì mới chạy
-next76
+next82
