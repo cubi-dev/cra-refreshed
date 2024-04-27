@@ -1,11 +1,15 @@
 // import "./App.css";
-import HackerNewsWithReducer from "./components/news/HackerNewsWithReducer";
+import React from "react";
 import "./index.css";
 
 function App() {
+  // const inputRef, abcRef = React.useRef(initialValue);
+  const countRef = React.useRef(0);
+  // truy xuất giá trị của ref 
+  console.log(countRef.current); // 0
   return (
     <div>
-      <HackerNewsWithReducer></HackerNewsWithReducer>
+      
     </div>
   );
 }
