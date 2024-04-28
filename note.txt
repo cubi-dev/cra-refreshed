@@ -149,4 +149,4 @@ _____________________HOOKS___________________________________________
       VD như cta có 1 chức năng chung là droplist và ấn ra ngoài nó sẽ hide đi thì làm 
         1 cái hook phục vụ việc đó chung là hợp lý đỡ phải code  đi code lại
   - Quy tắc trong React khi mà đặt tên cho 1 cái hooks/customHook thì phải có "use" ở đâu tên 
-  
+next106
