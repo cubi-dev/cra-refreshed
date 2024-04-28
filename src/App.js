@@ -1,10 +1,10 @@
 import React from "react";
 import "./index.css";
-import Input from "./components/form/Input";
+import Form from "./components/form/Form";
 function App() {
   return (
     <div>
-      <Input></Input>
+      <Form></Form>
     </div>
   );
 }
