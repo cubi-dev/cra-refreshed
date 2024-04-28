@@ -1,21 +1,12 @@
 import React from "react";
+import useClickOutSide from "../hooks/useClickOutSide";
 
 const Dropdown = () => {
-  const [showDropdown, setShowDropdown] = React.useState(false);
-  const dropdownRef = React.useRef(null);
-
-  React.useEffect(() => {
-    function handleClickOutDropDown(e) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setShowDropdown(false);
-      }
-      //   else {
-      //     console.log("Click inside dropdown");
-      //   }
-    }
-    document.addEventListener("click", handleClickOutDropDown);
-    return () => document.removeEventListener("click", handleClickOutDropDown);
-  }, []);
+  const {
+    nodeRef: dropdownRef,
+    setShow: setShowDropdown,
+    show: showDropdown,
+  } = useClickOutSide();
 
   return (
     <div className="relative w-full max-w-[400px]" ref={dropdownRef}>
