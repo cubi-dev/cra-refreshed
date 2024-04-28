@@ -19,6 +19,6 @@ export default function useClickOutSide(dom = "button") {
     }
     document.addEventListener("click", handleClickOutSide);
     return () => document.removeEventListener("click", handleClickOutSide);
-  }, []);
+  }, [dom]);
   return { show, setShow, nodeRef };
 }
