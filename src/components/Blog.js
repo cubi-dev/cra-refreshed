@@ -1,14 +1,10 @@
 import React from "react";
 import useLinkNewTab from "../hooks/useLinkNewTab";
-/**
-Ví dụ: Chúng ta lấy được các text bên dưới từ DB chứ kp từ tay gõ ra 
-nên chúng ta không thể tự custom bên trong thẻ <a> xong rồi cho thêm target="_blank" để new tab được 
-bây h phải viết 1 cái hooks để giải quyết vấn đề này 
- */
+import useHover from "../hooks/useHover";
 
 const Blog = () => {
   const { contentRef } = useLinkNewTab();
-
+  const { hovered, nodeRef } = useHover();
   return (
     <div className="entry-content" ref={contentRef}>
       <p className="mb-5">
@@ -16,7 +12,11 @@ const Blog = () => {
         ipsa repellendus ab assumenda beatae! Optio, error suscipit. Eius eos
         officiis aliquid a cumque architecto iste voluptas veritatis labore
         nemo?
-        <a href="https://google.com" className="underline">
+        <a
+          href="https://google.com"
+          className={`underline ${hovered ? "text-green-400" : ""}`}
+          ref={nodeRef}
+        >
           google.com
         </a>
         ?
