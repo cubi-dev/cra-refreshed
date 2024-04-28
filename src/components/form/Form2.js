@@ -1,44 +1,17 @@
 import React, { useState } from "react";
 
 const Form2 = () => {
-  // const [fullName, setFullName] = useState("");
-  // const [message, setMessage] = useState("");
-  // const [country, setCountry] = useState("");
-
-  // const handleInputChange = (event) => {
-  //   // console.log(event.target.value);
-  //   setFullName(event.target.value);
-  // };
-  // const handleTextAreaChange = (event) => {
-  //   setMessage(event.target.value);
-  // };
-  // const handleSelectChange = (event) => {
-  //   setCountry(event.target.value);
-  // };
   const [values, setValues] = useState({
     fullname: "",
     email: "",
     hobby: false,
   });
-  // obj.property : dot notation
-  // obj["property"] : bracket notation
   const handleInputChange = (e) => {
     const type = e.target.type;
     setValues({
       ...values,
       [e.target.name]: type === "checkbox" ? e.target.checked : e.target.value,
     });
-    // if (type === "checkbox") {
-    //   setValues({
-    //     ...values,
-    //     [e.target.name]: e.target.checked,
-    //   });
-    // }else{
-    //   setValues({
-    //     ...values,
-    //     [e.target.name]: e.target.value,
-    //   });
-    // }
   };
   return (
     <div className="p-5">

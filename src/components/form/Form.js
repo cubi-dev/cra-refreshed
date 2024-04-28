@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useHandleChange from "../../hooks/useHandleChange";
 
 const Form = () => {
   // const [fullName, setFullName] = useState("");
@@ -15,31 +16,38 @@ const Form = () => {
   // const handleSelectChange = (event) => {
   //   setCountry(event.target.value);
   // };
-  const [values, setValues] = useState({
+  // const [values, setValues] = useState({
+  //   fullname: "",
+  //   email: "",
+  //   hobby: false,
+  // });
+  // obj.property : dot notation
+  // obj["property"] : bracket notation
+  // const handleInputChange = (e) => {
+  //   const type = e.target.type;
+  //   setValues({
+  //     ...values,
+  //     [e.target.name]: type === "checkbox" ? e.target.checked : e.target.value,
+  //   });
+  // if (type === "checkbox") {
+  //   setValues({
+  //     ...values,
+  //     [e.target.name]: e.target.checked,
+  //   });
+  // }else{
+  //   setValues({
+  //     ...values,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // }
+  // };
+  const { values, handleChange } = useHandleChange({
     fullname: "",
     email: "",
     hobby: false,
   });
-  // obj.property : dot notation
-  // obj["property"] : bracket notation
-  const handleInputChange = (e) => {
-    const type = e.target.type;
-    setValues({
-      ...values,
-      [e.target.name]: type === "checkbox" ? e.target.checked : e.target.value,
-    });
-    // if (type === "checkbox") {
-    //   setValues({
-    //     ...values,
-    //     [e.target.name]: e.target.checked,
-    //   });
-    // }else{
-    //   setValues({
-    //     ...values,
-    //     [e.target.name]: e.target.value,
-    //   });
-    // }
-  };
+  console.log(values);
+
   return (
     <div className="p-5">
       <div className="flex gap-x-3">
@@ -48,16 +56,16 @@ const Form = () => {
           name="fullname"
           className="w-full max-w-[300px] p-5 border border-gray-200 rounded-lg"
           placeholder="Enter your name"
-          onChange={handleInputChange}
+          onChange={handleChange}
         />
         <input
           type="email"
           name="email"
           className="w-full max-w-[300px] p-5 border border-gray-200 rounded-lg"
           placeholder="Enter your email address"
-          onChange={handleInputChange}
+          onChange={handleChange}
         />
-        <input type="checkbox" name="hobby" onChange={handleInputChange} />
+        <input type="checkbox" name="hobby" onChange={handleChange} />
       </div>
       {/* {message}
       <textarea
