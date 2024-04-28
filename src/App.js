@@ -1,13 +1,11 @@
 import React from "react";
 import "./index.css";
-import Dropdown from "./components/Dropdown";
+import Blog from "./components/Blog";
 
 function App() {
   return (
     <div>
-      <div className="p-5">
-        <Dropdown></Dropdown>
-      </div>
+    <Blog></Blog>
     </div>
   );
 }
