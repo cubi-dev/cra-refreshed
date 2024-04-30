@@ -151,4 +151,9 @@ _____________________HOOKS___________________________________________
   - Quy tắc trong React khi mà đặt tên cho 1 cái hooks/customHook thì phải có "use" ở đâu tên 
 _____________________FORM___________________________________________
 1. Cơ bản: Form nó sẽ đi với các thẻ <input> <textarea> <select>
-2. Các thư viện xử lý form: Fomik vs React hook form 
+2. Các thư viện xử lý form: Fomik + Yup vs React hook form 
+3. Formik + Yup_______________________________
+- Cài đặt: 
+  + Formik: npm install formik --save
+  + Yup: npm install yup --save
+
