@@ -152,5 +152,3 @@ _____________________HOOKS___________________________________________
 _____________________FORM___________________________________________
 1. Cơ bản: Form nó sẽ đi với các thẻ <input> <textarea> <select>
 2. Các thư viện xử lý form: Fomik vs React hook form 
-
-next111
