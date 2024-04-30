@@ -1,10 +1,10 @@
 import React from "react";
 import "./index.css";
-import SignUpForm from "./components/form/SignUpForm";
+import SignUpFormV2 from "./components/form/SignUpFormV2";
 function App() {
   return (
     <div>
-      <SignUpForm></SignUpForm>
+      <SignUpFormV2></SignUpFormV2>
     </div>
   );
 }

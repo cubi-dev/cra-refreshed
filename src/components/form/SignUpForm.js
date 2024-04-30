@@ -1,20 +1,21 @@
 import React from "react";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
-const validate = (values) => {
-  const errors = {};
-  if (!values.firstName) {
-    errors.firstName = "Firstname is required";
-  } else if (values.firstName.length > 20) {
-    errors.firstName = "Must be 20 characters or less";
-  }
-  if (!values.lastName) {
-    errors.lastName = "Lastname is required";
-  } else if (values.lastName.length > 20) {
-    errors.lastName = "Must be 20 characters or less";
-  }
-  return errors;
-};
+// const validate = (values) => {
+//   const errors = {};
+//   if (!values.firstName) {
+//     errors.firstName = "Firstname is required";
+//   } else if (values.firstName.length > 20) {
+//     errors.firstName = "Must be 20 characters or less";
+//   }
+//   if (!values.lastName) {
+//     errors.lastName = "Lastname is required";
+//   } else if (values.lastName.length > 20) {
+//     errors.lastName = "Must be 20 characters or less";
+//   }
+//   return errors;
+// };
 
 const SignUpForm = () => {
   const formik = useFormik({
@@ -22,7 +23,14 @@ const SignUpForm = () => {
       firstName: "",
       lastName: "",
     },
-    validate,
+    validationSchema: Yup.object({
+      firstName: Yup.string()
+        .max(20, "Must be 20 characters or less")
+        .required("Firstname is required"),
+      lastName: Yup.string()
+        .max(20, "Must be 20 characters or less")
+        .required("Lastname is required"),
+    }),
     onSubmit: (values) => {
       console.log(values);
     },
@@ -38,13 +46,14 @@ const SignUpForm = () => {
         <label htmlFor="firstName">Firstname</label>
         <input
           type="text"
-          name="firstName"
+        //   name="firstName"
           id="firstName"
           placeholder="Enter your first name"
-          className="p-4 rounded-md border border-gray-100 outline-none focus:border-[rgba(41, 121, 255, 1)]"
-          value={formik.values.firstName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          className="p-4 rounded-md border border-gray-100 focus:border-[rgba(41, 121, 255, 1)]"
+          {...formik.getFieldProps("firstName")}
+        //   value={formik.values.firstName}
+        //   onChange={formik.handleChange}
+        //   onBlur={formik.handleBlur}
         />
         {formik.touched.firstName && formik.errors.firstName ? (
           <div className="text-sm text-red-500">{formik.errors.firstName}</div>
@@ -53,13 +62,14 @@ const SignUpForm = () => {
         <label htmlFor="lastName">Lastname</label>
         <input
           type="text"
-          name="lastName"
+        //   name="lastName"
           id="lastName"
           placeholder="Enter your last name"
-          className="p-4 rounded-md border border-gray-100 outline-none focus:border-[rgba(41, 121, 255, 1)]"
-          value={formik.values.lastName}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
+          className="p-4 rounded-md border border-gray-100 focus:border-[rgba(41, 121, 255, 1)]"
+          {...formik.getFieldProps("lastName")}
+        //   value={formik.values.lastName}
+        //   onChange={formik.handleChange}
+        //   onBlur={formik.handleBlur}
         />
         {formik.touched.lastName && formik.errors.lastName ? (
           <div className="text-sm text-red-500">{formik.errors.lastName}</div>

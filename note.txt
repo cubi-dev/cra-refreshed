@@ -156,4 +156,3 @@ _____________________FORM___________________________________________
 - Cài đặt: 
   + Formik: npm install formik --save
   + Yup: npm install yup --save
-
