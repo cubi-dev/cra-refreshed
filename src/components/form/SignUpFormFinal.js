@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage, useField } from "formik";
+import { Formik, Form, useField } from "formik";
 import * as Yup from "yup";
 
 const SignUpFormFinal = () => {
@@ -34,37 +34,12 @@ const SignUpFormFinal = () => {
           id="firstName"
           placeholder="Enter your first name"
         ></MyInput>
-        {/* <div className="flex flex-col gap-2 mb-5">
-          <label htmlFor="firstName">First Name</label>
-          <Field
-            name="firstName"
-            type="text"
-            placeholder="Enter your first name"
-            className="p-4 rounded-md border border-gray-100 "
-          ></Field>
-          <div className="text-sm text-red-500">
-            <ErrorMessage name="firstName"></ErrorMessage>
-          </div>
-        </div> */}
         <MyInput
           label="Last Name"
           name="lastName"
           id="lastName"
           placeholder="Enter your last name"
         ></MyInput>
-        {/* <div className="flex flex-col gap-2 mb-5">
-          <label htmlFor="lastName">Last Name</label>
-          <Field
-            name="lastName"
-            id="lastName"
-            type="text"
-            placeholder="Enter your last name"
-            className="p-4 rounded-md border border-gray-100 "
-          ></Field>
-          <div className="text-sm text-red-500">
-            <ErrorMessage name="lastName"></ErrorMessage>
-          </div>
-        </div> */}
         <MyInput
           label="Email Address"
           name="email"
@@ -72,72 +47,18 @@ const SignUpFormFinal = () => {
           type="email"
           placeholder="Enter your email address"
         ></MyInput>
-        {/* <div className="flex flex-col gap-2 mb-5">
-          <label htmlFor="email">Email Address</label>
-          <Field
-            name="email"
-            id="email"
-            type="email"
-            placeholder="Enter your email address"
-            className="p-4 rounded-md border border-gray-100 "
-          ></Field>
-          <div className="text-sm text-red-500">
-            <ErrorMessage name="email"></ErrorMessage>
-          </div>
-        </div> */}
         <MyTextarea
           label="Introduce yourself"
           name="intro"
           id="intro"
           placeholder="Enter your introduce"
         ></MyTextarea>
-        {/* <div className="flex flex-col gap-2 mb-5">
-          <label htmlFor="intro">Introduce yourself</label>
-          <Field
-            name="intro"
-            id="intro"
-            placeholder="Enter your introduce"
-            className="p-4 rounded-md border border-gray-100 h-[150px] resize-none"
-            as="textarea"
-          ></Field>
-          <div className="text-sm text-red-500">
-            <ErrorMessage name="intro"></ErrorMessage>
-          </div>
-        </div> */}
         <MySelectBox label="Select your job" name="job">
           <option value="frontend">Frontend Developer</option>
           <option value="backend">Backend Developer</option>
           <option value="fullstack">Fullstack Developer</option>
         </MySelectBox>
-
-        {/* <div className="flex flex-col gap-2 mb-5">
-          <label htmlFor="job">Select your job</label>
-          <Field
-            name="job"
-            className="p-4 rounded-md border border-gray-100"
-            as="select"
-          >
-            <option value="frontend">Frontend Developer</option>
-            <option value="backend">Backend Developer</option>
-            <option value="fullstack">Fullstack Developer</option>
-          </Field>
-          <div className="text-sm text-red-500">
-            <ErrorMessage name="job"></ErrorMessage>
-          </div>
-        </div> */}
         <MyCheckBox name="terms">I accept the terms and conditions</MyCheckBox>
-        {/* <div className="flex items-center gap-2 mb-5">
-          <Field
-            name="terms"
-            type="checkbox"
-            className="p-4 rounded-md border border-gray-100"
-          ></Field>
-          <p>I accept the terms and conditions</p>
-          <div className="text-sm text-red-500">
-            <ErrorMessage name="terms"></ErrorMessage>
-          </div>
-        </div> */}
-
         <div>
           <button
             type="submit"
@@ -151,14 +72,8 @@ const SignUpFormFinal = () => {
   );
 };
 
-// custom Field Formik = useField
-// {label, ...props} : rest parameter
-// {...field[0]} : spread operator
 const MyInput = ({ label, ...props }) => {
-  // console.log(props);
-  // const field = useField(props);
   const [field, meta] = useField(props);
-  // console.log(field);
   return (
     <div className="flex flex-col gap-2 mb-5">
       <label htmlFor={props.id || props.name}>{label}</label>
