@@ -156,3 +156,5 @@ _____________________FORM___________________________________________
 - Cài đặt: 
   + Formik: npm install formik --save
   + Yup: npm install yup --save
+- Chú ý: 
+  + Cách submit form = formik chuẩn chỉ: https://formik.org/docs/examples/async-submission

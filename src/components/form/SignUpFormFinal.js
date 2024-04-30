@@ -23,51 +23,71 @@ const SignUpFormFinal = () => {
           .required("Terms is required")
           .oneOf([true], "You must accept the terms and conditions"),
       })}
-      onSubmit={(values) => {
-        console.log(values);
+      onSubmit={(values, actions) => {
+        setTimeout(() => {
+          actions.resetForm({
+            firstName: "",
+            lastName: "",
+            email: "",
+            intro: "",
+            job: "",
+            terms: false,
+          });
+          actions.setSubmitting(false);
+        }, 5000);
       }}
     >
-      <Form className="p-10 w-full max-w-[500px] mx-auto" autoComplete="off">
-        <MyInput
-          label="First Name"
-          name="firstName"
-          id="firstName"
-          placeholder="Enter your first name"
-        ></MyInput>
-        <MyInput
-          label="Last Name"
-          name="lastName"
-          id="lastName"
-          placeholder="Enter your last name"
-        ></MyInput>
-        <MyInput
-          label="Email Address"
-          name="email"
-          id="email"
-          type="email"
-          placeholder="Enter your email address"
-        ></MyInput>
-        <MyTextarea
-          label="Introduce yourself"
-          name="intro"
-          id="intro"
-          placeholder="Enter your introduce"
-        ></MyTextarea>
-        <MySelectBox label="Select your job" name="job">
-          <option value="frontend">Frontend Developer</option>
-          <option value="backend">Backend Developer</option>
-          <option value="fullstack">Fullstack Developer</option>
-        </MySelectBox>
-        <MyCheckBox name="terms">I accept the terms and conditions</MyCheckBox>
-        <div>
-          <button
-            type="submit"
-            className="w-full p-4 bg-blue-600 text-white font-semibold rounded-lg"
+      {(formik) => {
+        return (
+          <Form
+            className="p-10 w-full max-w-[500px] mx-auto"
+            autoComplete="off"
           >
-            Submit
-          </button>
-        </div>
-      </Form>
+            <MyInput
+              label="First Name"
+              name="firstName"
+              id="firstName"
+              placeholder="Enter your first name"
+            ></MyInput>
+            <MyInput
+              label="Last Name"
+              name="lastName"
+              id="lastName"
+              placeholder="Enter your last name"
+            ></MyInput>
+            <MyInput
+              label="Email Address"
+              name="email"
+              id="email"
+              type="email"
+              placeholder="Enter your email address"
+            ></MyInput>
+            <MyTextarea
+              label="Introduce yourself"
+              name="intro"
+              id="intro"
+              placeholder="Enter your introduce"
+            ></MyTextarea>
+            <MySelectBox label="Select your job" name="job">
+              <option value="frontend">Frontend Developer</option>
+              <option value="backend">Backend Developer</option>
+              <option value="fullstack">Fullstack Developer</option>
+            </MySelectBox>
+            <MyCheckBox name="terms">
+              I accept the terms and conditions
+            </MyCheckBox>
+            <div>
+              <button
+                type="submit"
+                className="w-full p-4 bg-blue-600 text-white font-semibold rounded-lg"
+                disabled={formik.isSubmitting}
+              >
+                Submit
+              </button>
+            </div>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };
@@ -126,12 +146,10 @@ const MySelectBox = ({ label, ...props }) => {
 
 const MyCheckBox = ({ children, ...props }) => {
   const [field, meta] = useField(props);
-  // console.log(meta);
   return (
     <div className="flex flex-col gap-2 mb-5">
       <label className="flex items-center gap-2">
         <input type="checkbox" {...field} {...props} />
-        {/* {children} */}
         <p>{children}</p>
       </label>
       {meta.touched && meta.error ? (
