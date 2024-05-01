@@ -2,6 +2,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 import * as yup from "yup";
 
 const schemaValidation = yup.object({
@@ -15,14 +16,31 @@ const SignUpFormHook = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting, isValid, isDirty, dirtyFields },
   } = useForm({
     resolver: yupResolver(schemaValidation),
+    mode: "onChange", // khi sử dụng mode: "onChange" + check isValid thì nó sẽ check xem form có hợp lệ không mỗi khi mình chạm vô input
   });
+  console.log("isValid", isValid); // Cái này là để kiểm tra xem form có hợp lệ không
+  console.log("isDirty", isDirty); // Cái này là để kiểm tra xem form có chạm vô cái input nào không
+  console.log("dirtyFields", dirtyFields); // Cái này tương tự như isDirty nhưng nó sẽ trả về object những cái input mà mình đã chạm vô
   // errors = formState.errors
-  console.log(errors);
-  const onSubmit = (values) => {
-    console.log(values);
+  // console.log(errors);
+  // console.log(isSubmitting);
+  const onSubmit = async (values) => {
+    if (isValid) {
+      console.log("Send data to server: ", values);
+    }
+    // const response = await axios.get(
+    //   "https://hn.algolia.com/api/v1/search?query=react"
+    // );
+    // return response.data;
+    // return new Promise((resolve) => {
+    //   setTimeout(() => {
+    //     resolve();
+    //     console.log(values);
+    //   }, 5000);
+    // });
   };
   return (
     <form
@@ -76,7 +94,11 @@ const SignUpFormHook = () => {
           type="submit"
           className="w-full p-4 bg-blue-600 text-white font-semibold rounded-lg"
         >
-          Submit
+          {isSubmitting ? (
+            <div className="mx-auto w-5 h-5 border-2 border-white border-t-2 border-t-transparent rounded-full animate-spin"></div>
+          ) : (
+            "Submit"
+          )}
         </button>
       </div>
     </form>
